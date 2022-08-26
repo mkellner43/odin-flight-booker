@@ -1,0 +1,12 @@
+<%= form_with model: @flight, method: :get, local: true do | f | %>
+  <%= f.collection_select :departure_id, @airports, :id, :airport_code, {include_blank: 'Departing From'}, {class: "form-select mb-2"} %>
+
+  <%= f.collection_select :arrival_id, @airports, :id, :airport_code, {include_blank: 'Arriving At'}, {class: "form-select mb-2"}%>
+
+  <%= f.select :passengers, 1..4, {include_blank: "Passengers"}, {class:"form-select mb-2"} %>
+
+  <%= f.date_field :start, class:"form-control mb-2" %>
+  <div class="d-flex justify-content-center">
+    <%= f.submit "Search", class:"btn btn-dark mt-2 mb-2 btn-outline-light" %>
+  </div>
+<% end %>

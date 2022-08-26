@@ -11,7 +11,12 @@ airport_three = Airport.create(airport_code: "DFW")
 airport_four = Airport.create(airport_code: "LAX")
 
 
-Flight.create(start: DateTime.strptime("09/17/2022 12:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 12:00", "%m/%d/%Y %H:%M"), duration: 240, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 15:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 2:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 5:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 20:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
+Flight.create(start: DateTime.strptime("09/17/2022 9:00", "%m/%d/%Y %H:%M"), duration: 320, arrival_id: 3, departure_id: 4)
 Flight.create(start: DateTime.strptime("09/01/2022 17:00", "%m/%d/%Y %H:%M"), duration: 240, arrival_id: 1, departure_id: 4)
 Flight.create(start: DateTime.strptime("10/31/2022 05:00", "%m/%d/%Y %H:%M"), duration: 324, arrival_id: 2, departure_id: 3)
 Flight.create(start: DateTime.strptime("11/01/2022 20:00", "%m/%d/%Y %H:%M"), duration: 140, arrival_id: 3, departure_id: 4)

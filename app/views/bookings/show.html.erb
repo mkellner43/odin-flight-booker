@@ -1,0 +1,38 @@
+<div class="d-flex flex-column align-items-center">
+  <h1>
+    Showing your booking!
+  </h1>
+  <div class="card text-center mb-2 border-secondary " style="width: 18rem">
+    <h5 class="card-header bg-dark text-light">
+      <%="#{@flight.departure.airport_code} ➡ #{@flight.arrival.airport_code}" %>
+    </h5>
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2">
+        <%= @flight.start.strftime("%m/%d/%Y") %>
+      </h6>
+      <h6 class="card-text">
+        <%= "Departure time: #{@flight.start.strftime("%l:%m %p")}" %>
+      </h6>
+      <h6 class="card-text">
+        <%= "Flight duration: #{@flight.duration/60} hrs" %>
+      </h6>
+    </div>
+  </div>
+</div>
+
+        <% i = 1 %>
+  <div class="container d-flex justify-content-lg-evenly">
+    <% @passengers.each do | passenger | %>
+      <div class="card mb-2 text-center" style="width: 18rem">
+        <h5><%= "Passenger #{i}"%></h5>
+        <p class="card-item">
+          <%= passenger.name %>
+        </p>
+        <p class="card-item">
+          <%= passenger.email %>
+        </p>
+      </div>
+        <% i += 1 %>
+    <% end %>
+  </div>
+

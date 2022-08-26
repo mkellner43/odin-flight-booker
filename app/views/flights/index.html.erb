@@ -1,47 +1,9 @@
-<div class="container" style='width: 18rem'>
-  <div class='mb-5'>
-  <h1>Flight Details</h1>
-    <%= form_with model: @flight, method: :get, local: true do | f | %>
-      <%= f.label :depature_id, "Departure Airport:", class: "form-label" %>
-      <%= f.collection_select :departure_id, Airport.all.order(:airport_code), :id, :airport_code, {include_blank: 'Departing From'}, {class: "form-select"} %><br/>
-
-      <%= f.label :arrival_id, "Arrival Airport:", class: "form-label" %>
-      <%= f.collection_select :arrival_id, Airport.all.order(:airport_code), :id, :airport_code, {include_blank: 'Arriving At'}, {class: "form-select"}%><br/>
-
-      <%= f.label :passengers, "Passengers:", class: "form-label" %>
-      <%= f.select :passengers, 1..4, {include_blank: "Passengers"}, {class:"form-select"} %><br/>
-
-      <%= f.label :start, "Date:", class: "form-label" %>
-      <%= f.date_field :start, class:"form-control" %><br/>
-
-      <%= f.submit "Search", class:"btn btn-secondary" %>
-    <% end %>
-  </div>
-  <div class="d-flex">
-    <% if @available_flights %>
-      <% @available_flights.each do | available_flights |%>
-      <%= form_with model: @flight, method: :get, class: "d-flex justify-content-center align-items-center", url: bookings_path(available_flights) do | f | %>
-      <div class="me-2">
-      <%= f.radio_button :id, available_flights.id %>
-      <%= f.hidden_field :passengers %>
-      </div>
-
-      <div>
-        Date:
-        <%= available_flights.start.strftime("%m/%d/%Y") %><br/>
-        Time:
-        <%= available_flights.start.strftime("%l:%m %p") %><br/>
-        Departing from: 
-        <%= available_flights.departure.airport_code %><br/>
-        Arriving at:
-        <%= available_flights.arrival.airport_code %><br/>
-        Duration:
-        <%= available_flights.duration/60 %> hrs<br/>
-        <%= f.submit "Next", class: "btn btn-primary"%>
-        <% end %>
-      <% end %>
-    <% end %>
-    </div>
-  </div>
+<div class="container pb-2 pt-2" style='width: 18rem'>
+  <h1 class="text-center mb-4">
+    Flight Details
+  </h1>
+  <%= render "search_form" %>
 </div>
-
+<div class="container">
+  <%= render "search_results" %>
+</div>

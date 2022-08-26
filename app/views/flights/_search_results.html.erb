@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-evenly flex-wrap">
+  <% if @available_flights %>
+    <% @available_flights.each do | available_flights |%>
+        <div class="card text-center mb-2 border-secondary" style="width: 18rem">
+          <h5 class="card-header bg-dark text-light">
+            <%="#{available_flights.departure.airport_code} ➡ #{available_flights.arrival.airport_code}" %>
+          </h5>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2">
+                <%= available_flights.start.strftime("%m/%d/%Y") %>
+              </h6>
+              <h6 class="card-text">
+                <%= "Departure time: #{available_flights.start.strftime("%l:%m %p")}" %>
+              </h6>
+              <h6 class="card-text">
+                <%= "Flight duration: #{available_flights.duration/60} hrs" %>
+              </h6>
+
+              <%= form_with model: @flight, method: :get, url: new_booking_path do | f | %>
+                <%= f.hidden_field :id, value: available_flights.id %>
+                <%= f.hidden_field :passengers %>
+                <%= f.submit "Book", class: "btn btn-dark" %>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

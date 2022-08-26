@@ -9,11 +9,12 @@ class FlightsController < ApplicationController
         flash.now[:alert] = "No results found"
       end
     end
+    @airports = Airport.all.order(:airport_code)
   end
 
   private
   def flight_params
-    params.require(:flight).permit(:start, :duration, :arrival_id, :departure_id, :passengers)
+    params.require(:flight).permit(:id, :start, :duration, :arrival_id, :departure_id, :passengers)
   end
 end
 

@@ -9,10 +9,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      redirect_to booking_path(@booking), notice: "Successfully booked!"
+      redirect_to booking_path(@booking), notice: 'Successfully booked!'
     else
-      render :new, alert: "Something went wrong :("
-    end 
+      render :new, alert: 'Something went wrong :('
+    end
   end
 
   def show
@@ -22,11 +22,12 @@ class BookingsController < ApplicationController
   end
 
   private
+
   def flight_params
     params.require(:flight).permit(:id, :passengers)
   end
 
   def booking_params
-    params.require(:booking).permit(:flight_id, :passengers_attributes => [:name, :email])
+    params.require(:booking).permit(:flight_id, passengers_attributes: %i[name email])
   end
 end

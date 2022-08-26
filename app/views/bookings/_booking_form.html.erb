@@ -1,20 +1,18 @@
-<%= form_with model: @booking, local: true do | f | %>
-  <% i = 1 %>
-  <%= f.fields_for :passengers do | sub_f | %>
-    <div class="d-flex justify-content-center">
-      <div class="card p-4 mb-2" style="width:25rem">
-        <h3 class= "d-flex justify-content-center"><%= "Passenger #{i}" %></h3>
-          <%= sub_f.label :name, "Full Name:", class: "form-label" %>
-          <%= sub_f.text_field :name, class: "form-control" %><br/>
+  <%= form_with model: @booking, local: true, class:"d-flex flex-column align-items-center" do | f | %>
+    <% i = 1 %>
+    <%= f.fields_for :passengers do | sub_f | %>
+        <div class="card p-4 mb-2" style="width:25rem">
+          <h3><%= "Passenger #{i}" %></h3>
+            <%= sub_f.label :name, "Full Name:", class: "form-label" %>
+            <%= sub_f.text_field :name, class: "form-control" %><br/>
 
-          <%= sub_f.label :name, "Email:", class: "form-label" %>
-          <%= sub_f.email_field :email, class: "form-control" %>
-      </div>
+            <%= sub_f.label :name, "Email:", class: "form-label" %>
+            <%= sub_f.email_field :email, class: "form-control" %>
+        </div>
+      <% i += 1 %>
+    <% end %>
+    <div class="d-flex justify-content-center">
+      <%= f.hidden_field :flight_id, value: @flight.id %>
+      <%= f.submit "Pay", class: "btn btn-dark mt-2 ps-5 pe-5" %>
     </div>
-    <% i += 1 %>
   <% end %>
-  <div class="d-flex justify-content-center">
-    <%= f.hidden_field :flight_id, value: @flight.id %>
-    <%= f.submit "Pay", class: "btn btn-dark mt-2 ps-5 pe-5" %>
-  </div>
-<% end %>

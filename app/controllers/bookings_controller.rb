@@ -9,6 +9,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
+          Passenger.where("booking_id = ?", @booking.id).each do | p |
+            puts "#{p.inspect}"
+          BookingMailer.with(id: p.id, booking_id: @booking.id, flight_id: @booking.flight_id).confirmation_email.deliver_now
+        end
       redirect_to booking_path(@booking), notice: 'Successfully booked!'
     else
       render :new, alert: 'Something went wrong :('

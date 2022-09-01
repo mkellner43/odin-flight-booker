@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for booking with us, <%= @passenger.name %>!</h1>
+    <p>
+      You will receive email updates about this flight at: <%= @passenger.email %>.<br>
+    </p>
+    <p>
+      To view your booking, just follow this link: <%= link_to "Show Your Booking", booking_url(@booking, @flight) %>.
+    </p>
+    <p>Happy travels and have a great day!</p>
+  </body>
+</html>

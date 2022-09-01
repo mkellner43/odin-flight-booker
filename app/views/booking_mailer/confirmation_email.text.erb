@@ -1,0 +1,6 @@
+  Thanks for booking with us, <%= @passenger.name %>!
+      You will receive email updates about this flight at: <%= @passenger.email %>
+
+      To view your booking, just follow this link: <%= link_to "Show Your Booking", booking_url(@booking, @flight) %>.
+    
+    Happy travels and have a great day!
